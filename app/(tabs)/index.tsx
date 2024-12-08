@@ -1,13 +1,16 @@
 import { Text, View, StyleSheet } from "react-native";
-import { Link } from "expo-router";
+import { Image }  from 'expo-image'
+import ImageViewer from "../components/ImageViewer";
+
+const PlaceholderImage = require('../../assets/images/background-image.png');
 
 export default function Index() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>你好好</Text>
-      <Link href="/about" style={styles.button}>
-      go to abuot
-      </Link>
+      <View style={styles.iamgeContainer}>
+        <ImageViewer imgSource={PlaceholderImage}/>
+      </View>
+
     </View>
   );
 }
@@ -27,5 +30,15 @@ const styles = StyleSheet.create({
     marginTop: 20,
     fontSize: 20,
     color: "#fff"
+  },
+  iamgeContainer:{
+    flex:1,
+  },
+  image: {
+    width:320,
+    height:440,
+    borderRadius:18
+
   }
+
 })
