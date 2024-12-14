@@ -8,9 +8,9 @@ type Props = {
     onPress: () => void;
 }
 
-export default function InconButton({ icon, label, onPress }: Props) {
+export default function IconButton({ icon, label, onPress }: Props) {
     return (
-        <Pressable style={styles.InconButton}>
+        <Pressable style={styles.IconButton}>
             <MaterialIcons name={icon} size={24} color='#fff' />
             <Text style={styles.InconButtonLabel}>{label}</Text>
         </Pressable>
@@ -18,7 +18,7 @@ export default function InconButton({ icon, label, onPress }: Props) {
 }
 
 const styles = StyleSheet.create({
-    InconButton: {
+    IconButton: {
         justifyContent: 'center',
         alignItems: 'center',
     },

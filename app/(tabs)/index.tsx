@@ -4,14 +4,16 @@ import { useState } from "react";
 
 import Button from "../components/Button";
 import ImageViewer from "../components/ImageViewer";
-import InconButton from "../components/InconButton";
+import IconButton from "../components/IconButton";
 import CircleButton from "../components/CircleButton";
+import EmojiPicker from "../components/EmojiPicker";
 
 const PlaceholderImage = require('../../assets/images/background-image.png');
 
 export default function Index() {
   const [selectedImage, setSelectedImage] = useState<string | undefined>(undefined);
   const [showAppOptions, setShowAppOptions] = useState<boolean>(false);
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -31,12 +33,22 @@ export default function Index() {
   const onReset = () => {
     setShowAppOptions(false);
   };
+
   const onAddSticker = () => {
+    setIsModalVisible(true);
+  }
+
+  const onModalClose = () => {
+    setIsModalVisible(false);
+  }
+
+  const onSaveInmageAsync = async () => {
 
   }
-  const onSaveInmageAsync = () => {
 
-  }
+
+
+
 
 
 
@@ -48,9 +60,9 @@ export default function Index() {
       {showAppOptions ? (
         <View style={styles.optionsContainer}>
           <View style={styles.optionsRow}>
-            <InconButton icon="refresh" label="刷新" onPress={onReset} />
+            <IconButton icon="refresh" label="刷新" onPress={onReset} />
             <CircleButton onPress={onAddSticker} />
-            <InconButton icon="save-alt" label="保存" onPress={onSaveInmageAsync} />
+            <IconButton icon="save-alt" label="保存" onPress={onSaveInmageAsync} />
           </View>
         </View>
       ) : (
@@ -59,6 +71,10 @@ export default function Index() {
           <Button label="Use this phone" onPress={() => setShowAppOptions(true)} />
         </View>
       )}
+
+      <EmojiPicker isVisiable={isModalVisible} onClose={onModalClose}>
+      </EmojiPicker>
+
 
     </View>
   );
