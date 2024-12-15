@@ -3,14 +3,14 @@ import React, { PropsWithChildren } from 'react'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
 
 type Prpps = PropsWithChildren<{
-    isVisiable: boolean;
+    isVisible: boolean;
     onClose: () => void;
 }>
 
 
-export default function EmojiPicker({ isVisiable, children, onClose }: Prpps) {
+export default function EmojiPicker({ isVisible, children, onClose }: Prpps) {
     return (
-        <Modal animationType='slide' transparent={true} visible={isVisiable}>
+        <Modal animationType='slide' transparent={true} visible={isVisible}>
             <View style={styles.modalContent}>
                 <View style={styles.titleContainer}>
                     <Text style={styles.title}>选择一个表情</Text>
@@ -18,6 +18,7 @@ export default function EmojiPicker({ isVisiable, children, onClose }: Prpps) {
                         <MaterialIcons name="close" color="#fff" size={22} />
                     </Pressable>
                 </View>
+                {children}
             </View>
         </Modal>
     )
